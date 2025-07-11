@@ -66,3 +66,4 @@ npm run dev
 - Gerenciamento de estado com React Query
 
 ## 📝 Licença
+Este projeto foi desenvolvido durante o evento NLW da Rocketseat. 
