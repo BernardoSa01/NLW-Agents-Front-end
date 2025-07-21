@@ -7,7 +7,7 @@ import { useRooms } from "@/http/use-rooms"
 
 
 export function RoomList() {
-  const { data, isLoading } = useRooms()
+  const { data, isLoading, error } = useRooms()
   
   return (
     <Card>
@@ -26,7 +26,19 @@ export function RoomList() {
                 </p>
               )}
 
-              {data?.map(room => {
+              {error && (
+                <p className="text-red-500 text-sm">
+                  Erro ao carregar salas. Verifique se o servidor está rodando.
+                </p>
+              )}
+
+              {!isLoading && !error && Array.isArray(data) && data.length === 0 && (
+                <p className="text-muted-foreground text-sm">
+                  Nenhuma sala encontrada.
+                </p>
+              )}
+
+              {!isLoading && !error && Array.isArray(data) && data.length > 0 && data.map(room => {
                 return (
                 <Link 
                   key={room.id} 
